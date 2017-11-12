@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.list{
+  width: 400px !important;
+  margin: 0 auto; 
+}
+
+.cj {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  letter-spacing: 10px !important;
+}
+
+.word {
+  text-align: center;
+  font-size: 30px !important;
+}
