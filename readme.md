@@ -1,5 +1,5 @@
-check the code.
+# 倉頡解碼PWA
 
-for the cj json source
-https://github.com/EasyIME/PIME
+design based on [your-first-pwapp](https://github.com/googlecodelabs/your-first-pwapp) from Google
 
+cj5 json based on [json](https://github.com/EasyIME/PIME/tree/master/python/cinbase/json) from EasyIME
