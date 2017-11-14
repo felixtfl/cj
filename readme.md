@@ -1,6 +1,8 @@
 # 倉頡解碼PWA
 
-[!](https://www.dropbox.com/s/i3w0rdx5pox5tvt/cj.png)
+![icon](https://felixtfl.github.io/cj/images/icon/mstile-310x310.png)
+
+The icon design based on [flaticon](https://www.flaticon.com/free-icon/dictionary_177253#term=dictionary&page=1&position=13) created by Vignesh Oviyan
 
 design based on [your-first-pwapp](https://github.com/googlecodelabs/your-first-pwapp) from Google
 
