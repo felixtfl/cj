@@ -21,20 +21,7 @@ var filesToCache = [
   '/scripts/app.js',
   '/scripts/material.min.js',
   '/styles/inline.css',
-  '/styles/material.min.css',
-  '/images/clear.png',
-  '/images/cloudy-scattered-showers.png',
-  '/images/cloudy.png',
-  '/images/fog.png',
-  '/images/ic_add_white_24px.svg',
-  '/images/ic_refresh_white_24px.svg',
-  '/images/partly-cloudy.png',
-  '/images/rain.png',
-  '/images/scattered-showers.png',
-  '/images/sleet.png',
-  '/images/snow.png',
-  '/images/thunderstorm.png',
-  '/images/wind.png'
+  '/styles/material.min.css'
 ];
 
 self.addEventListener('install', function(e) {

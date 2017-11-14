@@ -87,10 +87,8 @@
      *
      ****************************************************************************/
 
-
     app.displayCJ = function(data){
       for(var i=0;i<=data.words.length-1;i++){
-        console.log(data)
         var word = app.cardTemplate.cloneNode(true);
         word.classList.remove('cardTemplate');
         word.querySelector('.word').textContent = data.words[i];
@@ -105,38 +103,7 @@
         app.container.removeAttribute('hidden');
         app.isLoading = false;
       }
-    }
-  
-  
-    // // Updates a weather card with the latest weather forecast. If the card
-    // // doesn't already exist, it's cloned from the template.
-    // app.updateForecastCard = function(data) {
-  
-    //   var card = app.visibleCards[data.key];
-    //   if (!card) {
-    //     card = app.cardTemplate.cloneNode(true);
-    //     card.classList.remove('cardTemplate');
-    //     card.querySelector('.location').textContent = data.label;
-    //     card.removeAttribute('hidden');
-    //     app.container.appendChild(card);
-    //     app.visibleCards[data.key] = card;
-    //   }
-  
-    //   // Verifies the data provide is newer than what's already visible
-    //   // on the card, if it's not bail, if it is, continue and update the
-    //   // time saved in the card
-  
-    //   card.querySelector('.description').textContent = current.text;
-    //   card.querySelector('.date').textContent = current.date;
-    //   card.querySelector('.current .icon').classList.add(app.getIconClass(current.code));
-    //   card.querySelector('.current .temperature .value').textContent = Math.round(current.temp);
-    //   if (app.isLoading) {
-    //     app.spinner.setAttribute('hidden', true);
-    //     app.container.removeAttribute('hidden');
-    //     app.isLoading = false;
-    //   }
-    // };
-  
+    };
   
     /*****************************************************************************
      *
@@ -144,7 +111,7 @@
      *
      ****************************************************************************/
     
-    // Search the 
+    // Search the cj
     app.cjcheck = function(words) {
       var output = {words:words,cj:{},cjc:{}};
       var cj = "";
