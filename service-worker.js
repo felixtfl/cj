@@ -15,14 +15,14 @@
 var dataCacheName = 'wordData-v1';
 var cacheName = 'cj-1';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/cj5.json',
-  '/scripts/app.js',
-  '/scripts/material.min.js',
-  '/styles/inline.css',
-  '/styles/material.min.css',
-  '/fonts/materialicons.woff2'
+  '/cj/',
+  '/cj/index.html',
+  '/cj/cj5.json',
+  '/cj/scripts/app.js',
+  '/cj/scripts/material.min.js',
+  '/cj/styles/inline.css',
+  '/cj/styles/material.min.css',
+  '/cj/fonts/materialicons.woff2'
 ];
 
 self.addEventListener('install', function(e) {
