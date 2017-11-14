@@ -1,6 +1,6 @@
 # 倉頡解碼PWA
 
-![icon](https://felixtfl.github.io/cj/images/icon/mstile-310x310.png)
+![icon](https://felixtfl.github.io/cj/images/icons/apple-touch-icon.png)
 
 The icon design based on [flaticon](https://www.flaticon.com/free-icon/dictionary_177253#term=dictionary&page=1&position=13) created by Vignesh Oviyan
 
