@@ -4,6 +4,9 @@
   margin: 0 auto; 
 }
 
+.btnmic{
+  left: 90%;
+}
 .cj {
   text-transform: uppercase;
   font-size: 15px !important;

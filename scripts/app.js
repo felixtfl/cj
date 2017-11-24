@@ -62,6 +62,8 @@
        app.cj5 = request.response;
     }
 
+    var input = document.getElementById("input").value;
+
     /*****************************************************************************
      *
      * Event listeners for UI elements
@@ -69,9 +71,11 @@
      ****************************************************************************/
   
     document.getElementById('btninput').addEventListener('click', function() {
-      var input = document.getElementById("input").value;
-
       app.cjcheck(input.split('').reverse().join(''));
+    });
+
+    document.getElementById('btnmic').addEventListener('click', function() {
+      startButton(this);
     });
 
     // document.getElementById("input").addEventListener("keyup", function(event) {
@@ -80,7 +84,57 @@
     //       document.getElementById("btninput").click();
     //  }
     // });
-  
+
+    var final_transcript = '';
+    var recognizing = false;
+    if (!('webkitSpeechRecognition' in window)) {
+      upgrade();
+    } else {
+        var recognition = new webkitSpeechRecognition();//SpeechRecognition()
+        recognition.interimResults = true;
+      
+        recognition.onstart = function() {
+          recognizing = true;
+        };
+      
+        recognition.onerror = function(event) {
+          console.log(event.error);
+        };
+      
+        recognition.onend = function() {
+          recognizing = false;
+        };
+      
+        recognition.onresult = function(event) {
+          var interim_transcript = '';
+          for (var i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              final_transcript += event.results[i][0].transcript;
+            } else {
+              interim_transcript += event.results[i][0].transcript;
+            }
+          }
+          input = final_transcript;
+        };
+      }
+      
+      // var two_line = /\n\n/g;
+      // var one_line = /\n/g;
+      // function linebreak(s) {
+      //   return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+      // }
+      
+      function startButton(event) {
+        if (recognizing) {
+          recognition.stop();
+          return;
+        }
+        final_transcript = '';
+        recognition.lang = 'zh-HK'||'yue-HK'||'yue-Hant-HK';
+        recognition.start();
+        input = '';
+      }
+
     /*****************************************************************************
      *
      * Methods to update/refresh the UI
@@ -104,7 +158,11 @@
         app.isLoading = false;
       }
     };
-  
+
+    function upgrade() {
+      document.getElementById('btnmic').style.visibility = 'hidden';
+      //showInfo('info_upgrade');
+    }
     /*****************************************************************************
      *
      * Methods for dealing with the model
