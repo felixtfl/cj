@@ -62,8 +62,6 @@
        app.cj5 = request.response;
     }
 
-    var input = document.getElementById("input").value;
-
     /*****************************************************************************
      *
      * Event listeners for UI elements
@@ -71,12 +69,14 @@
      ****************************************************************************/
   
     document.getElementById('btninput').addEventListener('click', function() {
-      app.cjcheck(input.split('').reverse().join(''));
+      app.cjcheck(document.getElementById("input").value.split('').reverse().join(''));
     });
 
-    document.getElementById('btnmic').addEventListener('click', function() {
-      startButton(this);
-    });
+    document.getElementById('btnmic').addEventListener('click', startButton);
+
+    // document.getElementById('form').onsubmit = function() {
+    //   app.cjcheck(input.split('').reverse().join(''));
+    // }
 
     // document.getElementById("input").addEventListener("keyup", function(event) {
     //   event.preventDefault();
@@ -107,6 +107,8 @@
         recognition.onend = function() {
           recognizing = false;
           console.log('mic end');
+          document.getElementById('mictooltip').innerHTML = 'Click to record';
+          document.getElementById("btninput").click();
           if (!final_transcript) {
             return;
           }
@@ -147,10 +149,10 @@
           return;
         }
         final_transcript = '';
-        document.getElementById('interim_transcript').innerHTML = 'Listening';
+        //document.getElementById("input").value = ' ';
+        document.getElementById('mictooltip').innerHTML = 'Listening';
         recognition.lang = 'zh-HK'||'yue-HK'||'yue-Hant-HK';
         recognition.start();
-        input = '';
       }
 
     /*****************************************************************************
