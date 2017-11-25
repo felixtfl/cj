@@ -50,7 +50,7 @@
         "x": "難",
         "y": "卜",
         "z": "重"
-    }
+        }
     };
   
     var requestURL = './cj5.json';
@@ -87,14 +87,17 @@
 
     var final_transcript = '';
     var recognizing = false;
+    
     if (!('webkitSpeechRecognition' in window)) {
       upgrade();
     } else {
         var recognition = new webkitSpeechRecognition();//SpeechRecognition()
+        //recognition.continuous = true;
         recognition.interimResults = true;
       
         recognition.onstart = function() {
           recognizing = true;
+          console.log('mic start');
         };
       
         recognition.onerror = function(event) {
@@ -103,10 +106,21 @@
       
         recognition.onend = function() {
           recognizing = false;
+          console.log('mic end');
+          if (!final_transcript) {
+            return;
+          }
+          // if (window.getSelection) {
+          //   window.getSelection().removeAllRanges();
+          //   var range = document.createRange();
+          //   range.selectNode(input);
+          //   window.getSelection().addRange(range);
+          // }
         };
       
         recognition.onresult = function(event) {
           var interim_transcript = '';
+          document.getElementById('interim_transcript').innerHTML = '';
           for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
               final_transcript += event.results[i][0].transcript;
@@ -114,7 +128,10 @@
               interim_transcript += event.results[i][0].transcript;
             }
           }
-          input = final_transcript;
+          final_transcript = final_transcript;
+          document.getElementById("input").value = final_transcript;
+          document.getElementById('interim_transcript').innerHTML = interim_transcript;
+          console.log(interim_transcript);
         };
       }
       
@@ -130,6 +147,7 @@
           return;
         }
         final_transcript = '';
+        document.getElementById('interim_transcript').innerHTML = 'Listening';
         recognition.lang = 'zh-HK'||'yue-HK'||'yue-Hant-HK';
         recognition.start();
         input = '';
