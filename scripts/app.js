@@ -62,6 +62,8 @@
        app.cj5 = request.response;
     }
 
+    var historys = window.localStorage;
+
     /*****************************************************************************
      *
      * Event listeners for UI elements
@@ -153,6 +155,15 @@
         document.getElementById('mictooltip').innerHTML = 'Listening';
         recognition.lang = 'zh-HK'||'yue-HK'||'yue-Hant-HK';
         recognition.start();
+      }
+      
+      var synth = window.speechSynthesis;
+      function speak(word){
+        if(word !== ''){
+          var utterThis = new SpeechSynthesisUtterance(word);
+          utterThis.lang = 'zh-HK'||'yue-HK'||'yue-Hant-HK';
+          synth.speak(utterThis);
+        }
       }
 
     /*****************************************************************************
