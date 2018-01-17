@@ -52,15 +52,24 @@
         "z": "重"
         }
     };
-  
-    var requestURL = './cj5.json';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-       app.cj5 = request.response;
-    }
+    
+    fetch('./cj5.json')
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+        // Examine the text in the response
+        response.json().then(function(data) {
+          app.cj5 = data;
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
 
     var historys = window.localStorage;
 
