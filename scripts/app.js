@@ -198,6 +198,14 @@
       word.removeAttribute('hidden');
       //remove duplicates
       app.removeCJ(data.words[i]);
+      //add swipe action
+      var mc = new Hammer(word);
+      mc.on("panleft", function (ev) {
+        app.removeCJ(ev.target.innerText.charAt(0));
+        if (ev.target.parentNode != null) {
+          app.removeCJ(ev.target.parentNode.innerText.charAt(0));
+        }
+      });
       app.container.insertBefore(word, app.container.firstChild);
     }
     if (app.isLoading) {
