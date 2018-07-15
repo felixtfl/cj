@@ -28,9 +28,9 @@ importScripts('/cj/serviceworker-cache-polyfill.js');
 // cache, then increment the CACHE_VERSION value. It will kick off the service worker update
 // flow and the old cache(s) will be purged as part of the activate event handler when the
 // updated service worker is activated.
-var CACHE_VERSION = 1;
+var CACHE_VERSION = 1.2;
 var CURRENT_CACHES = {
-  prefetch: 'prefetch-cache-v' + CACHE_VERSION
+  prefetch: 'cj-' + CACHE_VERSION
 };
 
 
