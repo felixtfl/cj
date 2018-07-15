@@ -1,9 +1,7 @@
 (function () {
   'use strict';
   var app = {
-    isLoading: true,
     historys: "",
-    spinner: document.querySelector('.loader'),
     cardTemplate: document.querySelector('.cardTemplate'),
     container: document.querySelector('.list'),
     cj5: {},
@@ -207,11 +205,6 @@
         }
       });
       app.container.insertBefore(word, app.container.firstChild);
-    }
-    if (app.isLoading) {
-      app.spinner.setAttribute('hidden', true);
-      app.container.removeAttribute('hidden');
-      app.isLoading = false;
     }
   };
 
